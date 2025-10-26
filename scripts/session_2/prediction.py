@@ -5,8 +5,10 @@ model_name = "housing_prediction"
 model_version = "1"
 alias = "the_best"
 
-# model_uri = f"models:/{model_name}/{model_version}"
-model_uri = f"models:/{model_name}@{alias}"
+mlflow.set_tracking_uri(uri="http://localhost:8080")
+
+model_uri = f"models:/{model_name}/{model_version}"
+# model_uri = f"models:/{model_name}@{alias}"
 
 model = mlflow.sklearn.load_model(model_uri)
 

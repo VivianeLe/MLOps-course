@@ -39,7 +39,7 @@ def train():
     )
 
     log_reg = LogisticRegression()
-    with mlflow.start_run(run_name="iris_training"):
+    with mlflow.start_run(run_name="iris_training_2"):
         mlflow.log_param("random_state", 42)
         log_reg.fit(X_train, y_train)
         # add metrics to the run

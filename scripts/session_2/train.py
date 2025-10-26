@@ -12,6 +12,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
 mlflow.set_tracking_uri(uri="http://localhost:8080")
+# mlflow.set_tracking_uri("file:./mlruns")
 
 # Configure logging
 logging.basicConfig(
@@ -32,6 +33,7 @@ def train():
 
     logger.info(f"Data path: {DATA_PATH}")
     logger.info(f"Artifact dir: {ARTIFACT_DIR}")
+
     import pandas as pd
 
     logger.info("Loading dataset...")
@@ -65,8 +67,8 @@ def train():
         ],
         remainder="drop",
     )
-    max_iter = 5000
-    tol = 1e-3
+    max_iter = 3000
+    tol = 1e-4
     learning_rate = "optimal"
     random_state = 20
 
@@ -87,7 +89,7 @@ def train():
     )
 
     logger.info("Training model...")
-    with mlflow.start_run(run_name="housing_linear_regression_5"):
+    with mlflow.start_run(run_name="housing_linear_regression_2"):
         mlflow.log_param(
             "max_iter",
             max_iter,

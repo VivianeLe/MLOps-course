@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-from typing import Any
-
-def training[request: Any] -> Any:
-    pass
-=======
 import logging
 import os
 from pathlib import Path
@@ -130,4 +124,3 @@ def train():
 
 if __name__ == "__main__":
     train()
->>>>>>> 1367dc72be80b430953a052d421bd4867077cae7
