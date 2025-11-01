@@ -23,7 +23,7 @@ logger = logging.getLogger("housing")
 
 
 def train():
-    mlflow.set_experiment("housing_price_training")
+    mlflow.set_experiment("housing_price_training2")
     # Paths
     PROJECT_ROOT = Path(os.getcwd())
     DATA_PATH = PROJECT_ROOT / "data" / "housing.csv"
@@ -89,7 +89,7 @@ def train():
     )
 
     logger.info("Training model...")
-    with mlflow.start_run(run_name="housing_linear_regression_2"):
+    with mlflow.start_run(run_name="housing_linear_regression_1"):
         mlflow.log_param(
             "max_iter",
             max_iter,
