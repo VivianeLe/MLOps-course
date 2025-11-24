@@ -14,7 +14,7 @@ model_uri = f"models:/{model_name}/{model_version}"
 
 model = mlflow.sklearn.load_model(model_uri)
 
-housing_router = APIRouter(prefix="/housing")
+housing_router = APIRouter(prefix="housing")
 
 # /housing/predict
 @housing_router.post("/predict", response_model=HousingPredictionResponse)
