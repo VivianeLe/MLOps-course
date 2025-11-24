@@ -1,16 +1,14 @@
+import os
 from enum import Enum
 import uvicorn
 from fastapi import FastAPI
 from pydantic import BaseModel
-from router import predict, utils, calculation
-from schemas import request, response
-import mlflow.sklearn
-import pandas as pd
+
+from scripts.session_3.router import predict, utils
 
 app = FastAPI()
 app.include_router(predict.housing_router)
-app.include_router(calculation.calculation_router)
-# app.include_router(utils.utils_router)
+app.include_router(utils.utils_router)
 
 @app.get("/")
 def root():
@@ -40,4 +38,5 @@ def root():
 #     return response.HousingPredictionResponse(predicted_price = predictions[0])
 
 if __name__ == "__main__":
-    uvicorn.run("api:app", host="0.0.0.0", port=3000, reload=True)
+    port = os.getenv("HOST_PORT", 8080)
+    uvicorn.run("api:app", host="0.0.0.0", port=port, reload=True)
